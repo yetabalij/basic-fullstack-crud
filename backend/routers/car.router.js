@@ -14,8 +14,8 @@ const router = express.Router();
 router.get("/getAllCars", getAllCars);
 router.get("/getSingleCar", getSingleCar);
 router.post("/postcar", postCar);
-router.put("/updatecarbyid", updateCarById);
-router.delete("/deletecarbyid", deletCarById);
+router.put("/updatecarbyid/:id", updateCarById);
+router.delete("/deletecarbyid/:id", deletCarById);
 
 //export router modules
 module.exports = router;
