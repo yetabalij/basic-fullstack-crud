@@ -12,7 +12,7 @@ const {
 const router = express.Router();
 
 router.get("/getAllCars", getAllCars);
-router.get("/getSingleCar", getSingleCar);
+router.get("/getSingleCar/:id", getSingleCar);
 router.post("/postcar", postCar);
 router.put("/updatecarbyid/:id", updateCarById);
 router.delete("/deletecarbyid/:id", deletCarById);
