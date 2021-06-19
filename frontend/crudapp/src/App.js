@@ -1,7 +1,9 @@
+import BasicTable from "./components/crudtable";
 function App() {
   return (
     <div>
-      <h1>Hello Ermi</h1>
+      <h3>Car Info.</h3>
+      <BasicTable/>
     </div>
   );
 }
