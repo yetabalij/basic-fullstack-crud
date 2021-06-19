@@ -22,7 +22,7 @@ const data = [
   { name: "Car Name 2", price: 7845 },
 ];
 
-export default function BasicTable() {
+const BasicTable = ({ cardata }) => {
   const classes = useStyles();
 
   return (
@@ -79,4 +79,6 @@ export default function BasicTable() {
       </Table>
     </TableContainer>
   );
-}
+};
+
+export default BasicTable;
