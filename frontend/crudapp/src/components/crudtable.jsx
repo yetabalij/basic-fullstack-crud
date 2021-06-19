@@ -17,14 +17,44 @@ const useStyles = makeStyles({
   },
 });
 
-const data = [
-  { name: "Car Name 1", price: 2457 },
-  { name: "Car Name 2", price: 7845 },
-];
-
 const BasicTable = ({ cardata }) => {
   const classes = useStyles();
 
+  const tbl = cardata.map((data) => {
+    return (
+      <TableRow key={data.name}>
+        <TableCell component="th" scope="row">
+          {data.name}
+        </TableCell>
+        <TableCell align="right">{data.price}</TableCell>
+        <TableCell align="right">{data.Condition}</TableCell>
+        <TableCell align="right">{data.Transmission}</TableCell>
+        <TableCell align="right">{data.enginesize}</TableCell>
+        <TableCell align="right">{data.enginetype}</TableCell>
+        <TableCell align="right">
+          <AddIcon
+            onClick={() => {
+              console.log("hello ermi");
+            }}
+          />
+        </TableCell>
+        <TableCell align="right">
+          <EditIcon
+            onClick={() => {
+              console.log("hello ermi");
+            }}
+          />
+        </TableCell>
+        <TableCell align="right">
+          <DeleteIcon
+            onClick={() => {
+              console.log("hello ermi");
+            }}
+          />
+        </TableCell>
+      </TableRow>
+    );
+  });
   return (
     <TableContainer component={Paper}>
       <Table className={classes.table} aria-label="simple table">
@@ -41,41 +71,7 @@ const BasicTable = ({ cardata }) => {
             <TableCell>&nbsp;</TableCell>
           </TableRow>
         </TableHead>
-        <TableBody>
-          {data.map((data) => (
-            <TableRow key={data.name}>
-              <TableCell component="th" scope="row">
-                {data.name}
-              </TableCell>
-              <TableCell align="right">{data.price}</TableCell>
-              <TableCell align="right">{data.condition}</TableCell>
-              <TableCell align="right">{data.transmission}</TableCell>
-              <TableCell align="right">{data.enginesize}</TableCell>
-              <TableCell align="right">{data.enginetype}</TableCell>
-              <TableCell align="right">
-                <AddIcon
-                  onClick={() => {
-                    console.log("hello ermi");
-                  }}
-                />
-              </TableCell>
-              <TableCell align="right">
-                <EditIcon
-                  onClick={() => {
-                    console.log("hello ermi");
-                  }}
-                />
-              </TableCell>
-              <TableCell align="right">
-                <DeleteIcon
-                  onClick={() => {
-                    console.log("hello ermi");
-                  }}
-                />
-              </TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
+        <TableBody>{tbl}</TableBody>
       </Table>
     </TableContainer>
   );
