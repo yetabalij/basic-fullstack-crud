@@ -36,6 +36,9 @@ export default function BasicTable() {
             <TableCell align="right">Transmission&nbsp;</TableCell>
             <TableCell align="right">Engine Size&nbsp;</TableCell>
             <TableCell align="right">Engine Type&nbsp;</TableCell>
+            <TableCell>&nbsp;</TableCell>
+            <TableCell>&nbsp;</TableCell>
+            <TableCell>&nbsp;</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
