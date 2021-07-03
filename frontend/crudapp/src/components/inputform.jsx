@@ -1,19 +1,9 @@
 import React from "react";
-import Button from "@material-ui/core/Button";
 
-const InputForm = ({ setLoadForm }) => {
-  console.log({ setLoadForm });
+const InputForm = () => {
   return (
     <div>
-      <h3>input form</h3>
-      <Button
-        color={"secondary"}
-        onClick={() => {
-          setLoadForm("other");
-        }}
-      >
-        Submit
-      </Button>
+      <h3>Register Form</h3>
     </div>
   );
 };
