@@ -4,7 +4,7 @@ import InputForm from "../components/InputForm";
 const Register = () => {
   return (
     <div>
-      <InputForm />
+      <InputForm status={-1} />
     </div>
   );
 };
