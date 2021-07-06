@@ -10,14 +10,32 @@ import Paper from "@material-ui/core/Paper";
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
 
+import InputForm from "./InputForm";
+import { useState } from "react";
+import { useEffect } from "react";
+import axios from "axios";
+
 const useStyles = makeStyles({
   table: {
     minWidth: 650,
   },
 });
 
+//ReadCar component
 const ReadCar = ({ cardata }) => {
   const classes = useStyles();
+  const [status, setStatus] = useState(-1);
+  const [singleCarData, setSingleCarData] = useState([]);
+  const [id, setId] = useState(0);
+
+  //Featch single car record from the api according to the index clicked
+  useEffect(() => {
+    axios
+      .get(`http://localhost:5000/api/getSingleCar/${id}`)
+      .then((response) => {
+        setSingleCarData(response.data);
+      });
+  }, [id]);
 
   const tbl = cardata.map((data, index) => {
     return (
@@ -33,7 +51,8 @@ const ReadCar = ({ cardata }) => {
         <TableCell align="right">
           <EditIcon
             onClick={() => {
-              console.log("Edit icon");
+              setStatus(index);
+              setId(data._id);
             }}
           />
         </TableCell>
@@ -50,23 +69,27 @@ const ReadCar = ({ cardata }) => {
 
   return (
     <div>
-      <TableContainer component={Paper}>
-        <Table className={classes.table} aria-label="simple table">
-          <TableHead>
-            <TableRow>
-              <TableCell>Car Name</TableCell>
-              <TableCell align="right">Price</TableCell>
-              <TableCell align="right">Condition&nbsp;</TableCell>
-              <TableCell align="right">Transmission&nbsp;</TableCell>
-              <TableCell align="right">Engine Size&nbsp;</TableCell>
-              <TableCell align="right">Engine Type&nbsp;</TableCell>
-              <TableCell>&nbsp;</TableCell>
-              <TableCell>&nbsp;</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>{tbl}</TableBody>
-        </Table>
-      </TableContainer>
+      {status === -1 ? (
+        <TableContainer component={Paper}>
+          <Table className={classes.table} aria-label="simple table">
+            <TableHead>
+              <TableRow>
+                <TableCell>Car Name</TableCell>
+                <TableCell align="right">Price</TableCell>
+                <TableCell align="right">Condition&nbsp;</TableCell>
+                <TableCell align="right">Transmission&nbsp;</TableCell>
+                <TableCell align="right">Engine Size&nbsp;</TableCell>
+                <TableCell align="right">Engine Type&nbsp;</TableCell>
+                <TableCell>&nbsp;</TableCell>
+                <TableCell>&nbsp;</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>{tbl}</TableBody>
+          </Table>
+        </TableContainer>
+      ) : (
+        <InputForm singleCarData={singleCarData}></InputForm>
+      )}
     </div>
   );
 };
