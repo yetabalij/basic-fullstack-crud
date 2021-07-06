@@ -25,9 +25,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const InputForm = ({ status }) => {
+const InputForm = ({ status, singleCarData }) => {
   const classes = useStyles();
-
+  console.log(singleCarData);
   return (
     <div>
       <div className={classes.container}>
