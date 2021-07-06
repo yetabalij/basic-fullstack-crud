@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter, Switch, Link, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Register from "./pages/Register";
+//import Edit from "./pages/Edit";
 
 //material-ui imports
 import { makeStyles } from "@material-ui/core/styles";
